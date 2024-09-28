@@ -85,6 +85,7 @@
      emacs
      vlc
      vscode
+     nixpkgs-fmt
      inputs.zen-browser.packages."${pkgs.system}".specific
      inputs.helix.packages."${pkgs.system}".helix
   ];
