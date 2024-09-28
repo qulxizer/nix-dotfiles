@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -40,7 +41,7 @@
   # services.xserver.enable = true;
 
 
-  
+
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -62,32 +63,33 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-   users.users.qulx = {
-     isNormalUser = true;
-     initialPassword = "2812";
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-};
+  users.users.qulx = {
+    isNormalUser = true;
+    initialPassword = "2812";
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
 
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   
+
   # inputs.zen-browser.packages."${system}".specific
-   programs.hyprland.enable = true;
-   
-   nixpkgs.config.allowUnfree = true; 
-   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     git
-     wget
-     kitty
-     firefox
-     emacs
-     vlc
-     vscode
-     nixpkgs-fmt
-     inputs.zen-browser.packages."${pkgs.system}".specific
-     inputs.helix.packages."${pkgs.system}".helix
+  programs.hyprland.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git
+    wget
+    kitty
+    firefox
+    emacs
+    vlc
+    vscode
+    nixpkgs-fmt
+    grim
+    inputs.zen-browser.packages."${pkgs.system}".specific
+    inputs.helix.packages."${pkgs.system}".helix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -101,7 +103,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
- services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

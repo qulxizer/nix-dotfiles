@@ -1,4 +1,3 @@
-
 { config, pkgs, ... }:
 
 {
@@ -8,20 +7,21 @@
 
 
   home.packages = with pkgs; [
-   git
-
+    git
   ];
   xdg.mimeApps = {
-     enable = true;
-     defaultApplications = let
+    enable = true;
+    defaultApplications =
+      let
         browser = "zen.desktop";
-     in {
-      "text/html" = "${browser}";
-      "x-scheme-handler/http" = "${browser}";
-      "x-scheme-handler/https" = "${browser}";
-      "x-scheme-handler/about" = "${browser}";
-      "x-scheme-handler/unknown" = "${browser}";
-    };
+      in
+      {
+        "text/html" = "${browser}";
+        "x-scheme-handler/http" = "${browser}";
+        "x-scheme-handler/https" = "${browser}";
+        "x-scheme-handler/about" = "${browser}";
+        "x-scheme-handler/unknown" = "${browser}";
+      };
   };
 
   programs.git = {
@@ -29,8 +29,6 @@
     userName = "Qulx";
     userEmail = "qulxizer@gmail.com";
   };
-
-
 
   home.stateVersion = "24.05";
 }
