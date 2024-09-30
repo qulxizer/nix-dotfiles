@@ -10,6 +10,8 @@
 
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     helix.url = "github:helix-editor/helix/master";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    swww.url = "github:LGFae/swww";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
