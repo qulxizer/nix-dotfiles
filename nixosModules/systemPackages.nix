@@ -12,17 +12,22 @@
     vlc
     vscode
     nixpkgs-fmt
-    grim
+    grimblast
     vesktop
-    ags
+    cliphist
+    wl-clipboard
     wofi
     fish
     alacritty
     gnome-font-viewer
     tree
     easyeffects
+    ags
+    home-manager
+    magnetic-catppuccin-gtk
+    nwg-look
+    haskellPackages.gi-dbusmenugtk3
     inputs.swww.packages.${pkgs.system}.swww
     inputs.zen-browser.packages."${pkgs.system}".specific
-    inputs.helix.packages."${pkgs.system}".helix
   ];
 }

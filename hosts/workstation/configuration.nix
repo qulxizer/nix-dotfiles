@@ -7,20 +7,26 @@
 {
   imports =
     [
+      inputs.home-manager.nixosModules.home-manager
       ./hardware-configuration.nix
       ./../../nixosModules/audio.nix
-      ./../../nixosModules/hyprland.nix
       ./../../nixosModules/systemPackages.nix
       ./../../nixosModules/bootloader.nix
+      ./../../nixosModules/programs/hyprland.nix
+      ./../../nixosModules/programs/ags.nix
     ];
 
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  networking.hostName = "qulx-pc";
+  networking.hostName = "qulx";
 
   time.timeZone = "Asia/Bahrain";
 
-
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      qulx = import ./home.nix;
+    };
+  };
 
 
   services.xserver.xkb.layout = "us";
@@ -34,8 +40,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
-
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk

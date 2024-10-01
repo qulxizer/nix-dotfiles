@@ -1,10 +1,16 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [
+      ./../../homeManagerModules/programs/ags.nix
+      ./../../homeManagerModules/programs/hyprland.nix
+      ./../../homeManagerModules/cli-tools/git.nix
+
+    ];
 
   home.username = "qulx";
   home.homeDirectory = "/home/qulx";
-
 
   home.packages = with pkgs; [
     git
@@ -24,11 +30,6 @@
       };
   };
 
-  programs.git = {
-    enable = true;
-    userName = "Qulx";
-    userEmail = "qulxizer@gmail.com";
-  };
 
   home.stateVersion = "24.05";
 }

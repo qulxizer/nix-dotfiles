@@ -8,19 +8,36 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:qulxizer/zen-browser-flake";
     helix.url = "github:helix-editor/helix/master";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     swww.url = "github:LGFae/swww";
+    ags.url = "github:Aylur/ags";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.qulx-pc = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      username = "qulx";
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        hosts/workstation/configuration.nix
-      ];
+    in
+    {
+      nixosConfigurations.qulx = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          home-manager.nixosModules.home-manager
+          hosts/workstation/configuration.nix
+        ];
+      };
+      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        # pkgs = import nixpkgs { inherit system; };
+
+        # pass inputs as specialArgs
+        extraSpecialArgs = { inherit inputs system; };
+        # import your home.nix
+        modules = [
+          hosts/workstation/home.nix
+        ];
+      };
+
     };
-  };
 }
