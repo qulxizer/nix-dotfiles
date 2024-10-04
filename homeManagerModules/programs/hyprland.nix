@@ -39,7 +39,7 @@
           "gaps_in" = 5;
           "gaps_out" = 10;
           "border_size" = 2;
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+          "col.active_border" = "rgba(cba6f7aa)";
           "col.inactive_border" = "rgba(595959aa)";
         };
         decoration = {
@@ -59,7 +59,8 @@
         };
         monitor = ",1920x1080@165,auto,auto";
         input = {
-          "kb_layout" = "us";
+          "kb_layout" = "us,ara";
+          "kb_options" = "grp:win_space_toggle";
           "force_no_accel" = true;
           "sensitivity" = 0;
 
@@ -68,6 +69,7 @@
           "ags"
           "hyprctl setcursor Bibata-Modern-Classic 24 &"
           "wl-paste --type text --watch cliphist store"
+          "hyprctl hyprpaper"
         ];
       };
 

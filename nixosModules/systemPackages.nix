@@ -26,6 +26,7 @@
     home-manager
     magnetic-catppuccin-gtk
     nwg-look
+    hyprpaper
     haskellPackages.gi-dbusmenugtk3
     inputs.swww.packages.${pkgs.system}.swww
     inputs.zen-browser.packages."${pkgs.system}".specific

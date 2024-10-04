@@ -30,7 +30,6 @@
 
 
   services.xserver.xkb.layout = "us";
-
   services.printing.enable = true;
 
   users.users.qulx = {
@@ -49,8 +48,18 @@
     fira-code-symbols
     dina-font
     proggyfonts
+    corefonts
+    vistafonts
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
+
+  fonts.fontconfig.defaultFonts =
+    {
+      serif = [ "Liberation Serif" "Noto Naskh Arabic" ];
+      sansSerif = [ "Noto Sans" "Noto Naskh Arabic" ];
+      monospace = [ "Fira Code" ];
+    };
+
   services.openssh.enable = true;
   system.stateVersion = "24.11"; # Did you read the comment? No.
 
