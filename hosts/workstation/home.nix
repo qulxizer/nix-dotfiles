@@ -8,7 +8,9 @@
       ./../../homeManagerModules/cli-tools/git.nix
       ./../../homeManagerModules/programs/hyprpaper.nix
       ./../../homeManagerModules/programs/alacritty.nix
-      ./../../homeManagerModules/cli-tools/fish.nix
+      ./../../homeManagerModules/cli-tools/zsh.nix
+
+
     ];
 
   home.username = "qulx";

@@ -17,7 +17,6 @@
     cliphist
     wl-clipboard
     wofi
-    fish
     alacritty
     gnome-font-viewer
     tree

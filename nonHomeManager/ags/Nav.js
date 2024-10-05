@@ -41,11 +41,14 @@ function ClientTitle() {
 
 
 function Clock() {
-    Utils.interval(1000, () => {
-        return Widget.Label({
-            class_name: "clock",
-            label: Utils.exec('date "+%-I:%M%p %b %d"'),
-        })
+    let time = Variable('time', {
+        poll: [1000, 'date "+%-I:%M%p %b %d"']
+    })
+    
+    // console.log(time.toString())
+    return Widget.Label({
+        class_name: "clock",
+        label: time.bind(),
     })
 
 }
