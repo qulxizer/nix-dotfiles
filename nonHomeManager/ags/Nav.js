@@ -16,7 +16,10 @@ const date = Variable("", {
 function Workspaces() {
     const activeId = hyprland.active.workspace.bind("id")
     const workspaces = hyprland.bind("workspaces")
-        .as(ws => ws.map(({ id }) => Widget.Button({
+        // @ts-ignore
+        .as(ws => ws.sort((w1,w2)=>{
+            return w1.id>w2.id
+        }).map(({ id }) => Widget.Button({
             on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
             child: Widget.Label(`${id}`),
             class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
@@ -38,10 +41,13 @@ function ClientTitle() {
 
 
 function Clock() {
-    return Widget.Label({
-        class_name: "clock",
-        label: date.bind(),
+    Utils.interval(1000, () => {
+        return Widget.Label({
+            class_name: "clock",
+            label: Utils.exec('date "+%-I:%M%p %b %d"'),
+        })
     })
+
 }
 
 

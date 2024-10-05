@@ -69,7 +69,7 @@
           "ags"
           "hyprctl setcursor Bibata-Modern-Classic 24 &"
           "wl-paste --type text --watch cliphist store"
-          "hyprctl hyprpaper"
+          "hyprpaper"
         ];
       };
 

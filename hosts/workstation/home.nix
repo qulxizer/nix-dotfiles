@@ -7,6 +7,7 @@
       ./../../homeManagerModules/programs/hyprland.nix
       ./../../homeManagerModules/cli-tools/git.nix
       ./../../homeManagerModules/programs/hyprpaper.nix
+      ./../../homeManagerModules/programs/alacritty.nix
     ];
 
   home.username = "qulx";
