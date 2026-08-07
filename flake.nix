@@ -15,7 +15,7 @@
     
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       username = "mahdi";
       system = "x86_64-linux";
