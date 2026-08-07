@@ -44,12 +44,12 @@
   services.printing.enable = true;
   programs.niri.enable = true;
 
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
   users.users.mahdi = {
     isNormalUser = true;
     initialPassword = "2812";
     extraGroups = [ "wheel" ];
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
 
   };
 
