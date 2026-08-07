@@ -58,7 +58,7 @@
 
       layout = {
         gaps = 10;
-        center-focused-column = "never";
+        # center-focused-column = "never";
         default-column-width.proportion = 0.5;
 
         preset-column-widths = [
