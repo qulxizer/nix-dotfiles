@@ -122,54 +122,39 @@ in
 
         # Using `node` for binds that need properties (like allow-when-locked or cooldown-ms)
         # Signature: node name args children properties
-        (node "XF86AudioRaiseVolume"
-          [ ]
-          [
-            (leaf "spawn" [
-              "wpctl"
-              "set-volume"
-              "@DEFAULT_AUDIO_SINK@"
-              "0.1+"
-            ])
-          ]
-          { allow-when-locked = true; }
-        )
-        (node "XF86AudioLowerVolume"
-          [ ]
-          [
-            (leaf "spawn" [
-              "wpctl"
-              "set-volume"
-              "@DEFAULT_AUDIO_SINK@"
-              "0.1-"
-            ])
-          ]
-          { allow-when-locked = true; }
-        )
-        (node "XF86AudioMute"
-          [ ]
-          [
-            (leaf "spawn" [
-              "wpctl"
-              "set-mute"
-              "@DEFAULT_AUDIO_SINK@"
-              "toggle"
-            ])
-          ]
-          { allow-when-locked = true; }
-        )
-        (node "XF86AudioMicMute"
-          [ ]
-          [
-            (leaf "spawn" [
-              "wpctl"
-              "set-mute"
-              "@DEFAULT_AUDIO_SOURCE@"
-              "toggle"
-            ])
-          ]
-          { allow-when-locked = true; }
-        )
+        # Audio binds with properties in the 2nd slot
+        (node "XF86AudioRaiseVolume" { allow-when-locked = true; } [
+          (leaf "spawn" [
+            "wpctl"
+            "set-volume"
+            "@DEFAULT_AUDIO_SINK@"
+            "0.1+"
+          ])
+        ])
+        (node "XF86AudioLowerVolume" { allow-when-locked = true; } [
+          (leaf "spawn" [
+            "wpctl"
+            "set-volume"
+            "@DEFAULT_AUDIO_SINK@"
+            "0.1-"
+          ])
+        ])
+        (node "XF86AudioMute" { allow-when-locked = true; } [
+          (leaf "spawn" [
+            "wpctl"
+            "set-mute"
+            "@DEFAULT_AUDIO_SINK@"
+            "toggle"
+          ])
+        ])
+        (node "XF86AudioMicMute" { allow-when-locked = true; } [
+          (leaf "spawn" [
+            "wpctl"
+            "set-mute"
+            "@DEFAULT_AUDIO_SOURCE@"
+            "toggle"
+          ])
+        ])
 
         (plain "Mod+Q" [ (flag "close-window") ])
 
