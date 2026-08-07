@@ -2,7 +2,7 @@
 {
   programs.zsh = {
     enable = true;
-    initContent = ''
+    initExtra = ''
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
     zplug = {
