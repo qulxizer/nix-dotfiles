@@ -2,33 +2,41 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      # inputs.home-manager.nixosModules.home-manager
-      ./hardware-configuration.nix
-      ./../../nixos-modules/audio.nix
-      ./../../nixos-modules/system-packages.nix
-      ./../../nixos-modules/services.nix
-      ./../../nixos-modules/bootloader.nix
-      # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
-    ];
+  imports = [
+    # inputs.home-manager.nixosModules.home-manager
+    ./hardware-configuration.nix
+    ./../../nixos-modules/audio.nix
+    ./../../nixos-modules/system-packages.nix
+    ./../../nixos-modules/services.nix
+    ./../../nixos-modules/bootloader.nix
+    # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
+  ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   networking.hostName = "mahdi";
 
   time.timeZone = "Asia/Bahrain";
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    backupFileExtension = "backup";
     users = {
       mahdi = import ./home.nix;
     };
   };
-
 
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
@@ -68,4 +76,3 @@
   system.stateVersion = "26.05"; # Did you read the comment? No.
 
 }
-
