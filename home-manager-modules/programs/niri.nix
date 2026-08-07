@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   programs.niri = {
     enable = true;
     settings = {
@@ -112,7 +112,7 @@
         }
       ];
 
-      binds = {
+      binds = with config.lib.niri.actions; {
         "Mod+Shift+Slash".action.show-hotkey-overlay = true;
 
         "Mod+Return".action.spawn = "ghostty";
