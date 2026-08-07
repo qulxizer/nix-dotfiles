@@ -6,6 +6,7 @@
 	fuzzel
 	mako
 	swayidle
+	brave
     catppuccin-gtk
     adwaita-icon-theme
     bibata-cursors
