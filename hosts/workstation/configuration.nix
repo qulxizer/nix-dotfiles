@@ -44,7 +44,7 @@
   services.printing.enable = true;
   programs.niri.enable = true;
 
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
   users.users.mahdi = {
     isNormalUser = true;
     initialPassword = "2812";
