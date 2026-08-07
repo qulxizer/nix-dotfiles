@@ -12,6 +12,7 @@
 	nodejs
 	awww
 	tmux
+	fzf
     catppuccin-gtk
     ghostty
     adwaita-icon-theme
