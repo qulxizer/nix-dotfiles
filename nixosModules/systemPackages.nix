@@ -7,6 +7,7 @@
 	mako
 	swayidle
 	brave
+	go
     catppuccin-gtk
     ghostty
     adwaita-icon-theme
