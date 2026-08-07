@@ -14,9 +14,9 @@
   home.homeDirectory = "/home/mahdi";
   home.enableNixpkgsReleaseCheck = false;
 
-  home.packages = with pkgs; [
-    git
-  ];
+  # home.packages = with pkgs; [
+  #   git
+  # ];
   xdg.mimeApps = {
     enable = true;
     defaultApplications =
