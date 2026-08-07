@@ -8,6 +8,7 @@
     # ./../../homeManagerModules/programs/alacritty.nix
     ./../../home-manager-modules/cli-tools/zsh.nix
     ./../../home-manager-modules/programs/spicetify.nix
+    ./../../home-manager-modules/programs/foot.nix
   ];
   nixpkgs.config.allowUnfree = true;
   home.sessionVariables = {
