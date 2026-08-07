@@ -22,12 +22,12 @@
 
   time.timeZone = "Asia/Bahrain";
 
-  # home-manager = {
-  #   extraSpecialArgs = { inherit inputs; };
-  #   users = {
-  #     mahdi = import ./home.nix;
-  #   };
-  # };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      mahdi = import ./home.nix;
+    };
+  };
 
 
   services.xserver.xkb.layout = "us";
