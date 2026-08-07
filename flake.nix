@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inputs.spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     # zen-browser.url = "github:qulxizer/zen-browser-flake";
     # helix.url = "github:helix-editor/helix/master";
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";

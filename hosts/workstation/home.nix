@@ -7,7 +7,7 @@
     # ./../../homeManagerModules/programs/hyprpaper.nix
     # ./../../homeManagerModules/programs/alacritty.nix
     ./../../home-manager-modules/cli-tools/zsh.nix
-
+    ./../../home-manager-modules/programs/spicetify.nix
   ];
 
   home.username = "mahdi";
