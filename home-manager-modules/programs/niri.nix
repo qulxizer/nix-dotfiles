@@ -48,8 +48,8 @@
       };
 
       outputs."DP-1" = {
-        mode = "1920x1080@240";
-        transform = "normal";
+        # mode = "1920x1080@240";
+        # transform = "normal";
         position = {
           x = 1280;
           y = 0;
