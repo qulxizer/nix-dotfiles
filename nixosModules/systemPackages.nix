@@ -9,6 +9,7 @@
 	brave
 	go
 	waybar
+	nodejs
     catppuccin-gtk
     ghostty
     adwaita-icon-theme
