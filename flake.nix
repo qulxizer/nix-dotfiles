@@ -22,7 +22,7 @@
       system = "x86_64-linux";
     in
     {
-      nixosConfigurations.qulx = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.mahdi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.home-manager
