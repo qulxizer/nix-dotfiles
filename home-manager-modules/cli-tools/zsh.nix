@@ -4,7 +4,7 @@
     enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
-    initExtra = "source ~/nix-dotfiles/non-home-manager/zsh/.p10k.zsh";
+    initContent = "source ${../../non-home-manager/zsh/.p10k.zsh}";
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
