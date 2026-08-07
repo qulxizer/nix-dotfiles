@@ -29,7 +29,7 @@
     easyeffects
     # ags
     home-manager
-    magnetic-catppuccin-gtk
+    # magnetic-catppuccin-gtk
     nwg-look
     hyprpaper
     # haskellPackages.gi-dbusmenugtk3
