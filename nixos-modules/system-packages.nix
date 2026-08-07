@@ -23,7 +23,7 @@
     adwaita-icon-theme
     bibata-cursors
     vim
-    git
+    # git
     wget
     kitty
     firefox
