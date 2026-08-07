@@ -4,16 +4,16 @@
   programs.zsh = {
     enable = true;
 
-    # mkBefore forces this to the absolute top of your .zshrc
+    # mkBefore forces this to the absolute top of .zshrc
     initContent = lib.mkBefore ''
-      # 1. Instant prompt (has to be first)
+      # Instant prompt
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
 
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
-      # 3. Source your config variables
+      # Source config variables
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
   };

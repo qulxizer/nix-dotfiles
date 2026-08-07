@@ -42,7 +42,7 @@
 
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
-  programs.niri.enable = true;
+  # programs.niri.enable = true;
 
   programs.zsh.enable = true;
   users.users.mahdi = {
