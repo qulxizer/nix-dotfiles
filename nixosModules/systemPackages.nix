@@ -8,6 +8,8 @@
     swayidle
     brave
     go
+    gcc
+    rustc
     waybar
     nodejs
     awww
