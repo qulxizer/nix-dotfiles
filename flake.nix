@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "Mahdi's Flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -16,7 +16,7 @@
     
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       username = "mahdi";
       system = "x86_64-linux";
