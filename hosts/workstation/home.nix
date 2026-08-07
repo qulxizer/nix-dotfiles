@@ -20,7 +20,7 @@
   home.homeDirectory = "/home/mahdi";
   home.enableNixpkgsReleaseCheck = false;
   package = pkgs.niri.override {
-    libdisplay-info_0_2 = pkgs.libdisplay-info;
+    "libdisplay-info_0_2" = pkgs.libdisplay-info;
   };
 
   # home.packages = with pkgs; [
