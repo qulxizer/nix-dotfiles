@@ -4,7 +4,7 @@
     enable = true;
     enableCompletion = true;
     dotDir = "../../non-home-manager/zsh/";
-    initExtra = "source non-home-manager/zsh/.p10k.zsh";
+    initExtra = "source ../../non-home-manager/zsh/.p10k.zsh";
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
