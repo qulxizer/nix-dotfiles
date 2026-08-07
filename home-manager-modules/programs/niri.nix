@@ -112,7 +112,7 @@
         }
       ];
 
-      binds = with config.lib.niri.actions; {
+      binds = {
         "Mod+Shift+Slash".action.show-hotkey-overlay = true;
 
         "Mod+Return".action.spawn = "ghostty";
