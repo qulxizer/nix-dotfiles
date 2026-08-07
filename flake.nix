@@ -29,16 +29,16 @@
           hosts/workstation/configuration.nix
         ];
       };
-      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-        # pkgs = import nixpkgs { inherit system; };
-
-        # pass inputs as specialArgs
-        extraSpecialArgs = { inherit inputs system; };
-        # import your home.nix
-        modules = [
-          # hosts/workstation/home.nix
-        ];
-      };
+      # homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+      #   # pkgs = import nixpkgs { inherit system; };
+      #
+      #   # pass inputs as specialArgs
+      #   extraSpecialArgs = { inherit inputs system; };
+      #   # import your home.nix
+      #   modules = [
+      #     # hosts/workstation/home.nix
+      #   ];
+      # };
 
     };
 }
