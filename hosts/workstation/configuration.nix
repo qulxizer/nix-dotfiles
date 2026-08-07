@@ -7,13 +7,12 @@
 {
   imports =
     [
-      inputs.home-manager.nixosModules.home-manager
+      # inputs.home-manager.nixosModules.home-manager
       ./hardware-configuration.nix
       ./../../nixosModules/audio.nix
       ./../../nixosModules/systemPackages.nix
       ./../../nixosModules/bootloader.nix
-      ./../../nixosModules/programs/hyprland.nix
-      ./../../nixosModules/programs/ags.nix
+      # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -21,12 +20,12 @@
 
   time.timeZone = "Asia/Bahrain";
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      mahdi = import ./home.nix;
-    };
-  };
+  # home-manager = {
+  #   extraSpecialArgs = { inherit inputs; };
+  #   users = {
+  #     mahdi = import ./home.nix;
+  #   };
+  # };
 
 
   services.xserver.xkb.layout = "us";
