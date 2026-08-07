@@ -12,13 +12,19 @@
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     # swww.url = "github:LGFae/swww";
     # ags.url = "github:Aylur/ags";
-    
+
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
       username = "mahdi";
-      system = "x86_64-linux";
+      # system = "x86_64-linux";
     in
     {
       nixosConfigurations.mahdi = nixpkgs.lib.nixosSystem {
@@ -27,14 +33,6 @@
           # home-manager.nixosModules.home-manager
           hosts/workstation/configuration.nix
           home-manager.nixosModules.default
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users."${username}" = hosts/workstation/home.nix;
-            };
-          }
         ];
       };
     };
