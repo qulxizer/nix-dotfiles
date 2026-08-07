@@ -4,6 +4,20 @@ let
 in
 {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      spotify = prev.spotify.overrideAttrs (oldAttrs: {
+        postInstall = (oldAttrs.postInstall or "") + ''
+          wrapProgram $out/bin/spotify \
+            --set DISPLAY "" \
+            --add-flags "--enable-features=UseOzonePlatform" \
+            --add-flags "--ozone-platform=wayland"
+        '';
+      });
+    })
+  ];
+
   programs.spicetify = {
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
