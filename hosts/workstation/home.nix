@@ -3,12 +3,11 @@
 {
   imports =
     [
-      ./../../homeManagerModules/programs/hyprland.nix
+      # ./../../homeManagerModules/programs/hyprland.nix
       ./../../homeManagerModules/cli-tools/git.nix
-      ./../../homeManagerModules/programs/hyprpaper.nix
-      ./../../homeManagerModules/programs/alacritty.nix
+      # ./../../homeManagerModules/programs/hyprpaper.nix
+      # ./../../homeManagerModules/programs/alacritty.nix
       ./../../homeManagerModules/cli-tools/zsh.nix
-
 
     ];
 
@@ -22,7 +21,7 @@
     enable = true;
     defaultApplications =
       let
-        browser = "zen.desktop";
+        browser = "brave.desktop";
       in
       {
         "text/html" = "${browser}";
