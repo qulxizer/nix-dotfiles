@@ -4,7 +4,10 @@
     enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
-    initContent = "source ${../../non-home-manager/zsh/.p10k.zsh}";
+    initExtra = ''
+      # Source powerlevel10k configuration safely
+      [[ ! -f ${../../non-home-manager/zsh/.p10k.zsh} ]] || source ${../../non-home-manager/zsh/.p10k.zsh}
+    '';
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
