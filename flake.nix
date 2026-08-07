@@ -3,10 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # home-manager = {
-    #   url = "github:nix-community/home-manager/release-24.05";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # zen-browser.url = "github:qulxizer/zen-browser-flake";
     # helix.url = "github:helix-editor/helix/master";
@@ -27,17 +27,17 @@
         modules = [
           # home-manager.nixosModules.home-manager
           hosts/workstation/configuration.nix
+          home-manager.nixosModules.default
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; }
+              users."${username}" = 
+                  hosts/workstation/home.nix;
+            };
+          }
         ];
       };
-      # homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-      #   # pkgs = import nixpkgs { inherit system; };
-      #
-      #   # pass inputs as specialArgs
-      #   extraSpecialArgs = { inherit inputs system; };
-      #   # import your home.nix
-      #   modules = [
-      #     # hosts/workstation/home.nix
-      #   ];
-      # };
     };
 }

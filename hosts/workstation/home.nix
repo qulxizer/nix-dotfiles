@@ -7,7 +7,7 @@
       ./../../home-manager-modules/cli-tools/git.nix
       # ./../../homeManagerModules/programs/hyprpaper.nix
       # ./../../homeManagerModules/programs/alacritty.nix
-      ./../../home-manager-modules/cli-tools/zsh.nix
+      # ./../../home-manager-modules/cli-tools/zsh.nix
 
     ];
 
