@@ -2,6 +2,7 @@
   programs.niri = {
     enable = true;
     settings = {
+
       prefer-no-csd = true;
 
       environment = {
@@ -111,7 +112,7 @@
         }
       ];
 
-      binds = with config.lib.niri.actions; {
+      binds = {
         "Mod+Shift+Slash".action.show-hotkey-overlay = true;
 
         "Mod+Return".action.spawn = "ghostty";
