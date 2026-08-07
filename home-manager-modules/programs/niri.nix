@@ -58,7 +58,7 @@
 
       layout = {
         gaps = 10;
-        # center-focused-column = "never";
+        center-focused-column = "never";
         default-column-width.proportion = 0.5;
 
         preset-column-widths = [
@@ -74,7 +74,7 @@
           { proportion = 1.0; }
         ];
 
-        focus-ring.off = true;
+        # focus-ring.off = true;
         border = {
           width = 3;
           active.color = "#cba6f7";
