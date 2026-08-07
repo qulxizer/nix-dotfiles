@@ -11,6 +11,8 @@
     gcc
     rustc
     cargo
+    ripgrep
+    spotify
     waybar
     nodejs
     awww

@@ -10,7 +10,7 @@
       # inputs.home-manager.nixosModules.home-manager
       ./hardware-configuration.nix
       ./../../nixos-modules/audio.nix
-      ./../../nixos-modules/systemPackages.nix
+      ./../../nixos-modules/system-packages.nix
       ./../../nixos-modules/services.nix
       ./../../nixos-modules/bootloader.nix
       # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
