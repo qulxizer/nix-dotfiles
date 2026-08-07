@@ -8,6 +8,7 @@
 	swayidle
 	brave
 	go
+	waybar
     catppuccin-gtk
     ghostty
     adwaita-icon-theme

@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ./../../homeManagerModules/programs/ags.nix
       ./../../homeManagerModules/programs/hyprland.nix
       ./../../homeManagerModules/cli-tools/git.nix
       ./../../homeManagerModules/programs/hyprpaper.nix
