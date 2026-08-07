@@ -4,25 +4,17 @@
   programs.zsh = {
     enable = true;
 
-    # Actually load the theme engine
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
+    # mkBefore forces this to the absolute top of your .zshrc
+    initContent = lib.mkBefore ''
+      # 1. Instant prompt (has to be first)
+      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi
 
-    # Modern way to init in HM, fixes your warnings
-    initContent = lib.mkMerge [
-      (lib.mkBefore ''
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
-      '')
-      ''
-        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      ''
-    ];
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+
+      # 3. Source your config variables
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    '';
   };
 }
