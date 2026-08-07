@@ -4,10 +4,10 @@
   imports =
     [
       # ./../../homeManagerModules/programs/hyprland.nix
-      ./../../homeManagerModules/cli-tools/git.nix
+      ./../../home-manager-modules/cli-tools/git.nix
       # ./../../homeManagerModules/programs/hyprpaper.nix
       # ./../../homeManagerModules/programs/alacritty.nix
-      ./../../homeManagerModules/cli-tools/zsh.nix
+      ./../../home-manager-modules/cli-tools/zsh.nix
 
     ];
 

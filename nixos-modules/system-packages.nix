@@ -10,6 +10,7 @@
     go
     gcc
     rustc
+    cargo
     waybar
     nodejs
     awww

@@ -9,10 +9,10 @@
     [
       # inputs.home-manager.nixosModules.home-manager
       ./hardware-configuration.nix
-      ./../../nixosModules/audio.nix
-      ./../../nixosModules/systemPackages.nix
-      ./../../nixosModules/services.nix
-      ./../../nixosModules/bootloader.nix
+      ./../../nixos-modules/audio.nix
+      ./../../nixos-modules/systemPackages.nix
+      ./../../nixos-modules/services.nix
+      ./../../nixos-modules/bootloader.nix
       # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
     ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
