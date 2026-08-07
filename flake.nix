@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    inputs.niri.url = "github:sodiboo/niri-flake";
     # zen-browser.url = "github:qulxizer/zen-browser-flake";
     # helix.url = "github:helix-editor/helix/master";
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
