@@ -3,8 +3,8 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    dotDir = "../../non-home-manager/zsh/";
-    initExtra = "source ../../non-home-manager/zsh/.p10k.zsh";
+    dotDir = ".config/zsh";
+    initExtra = "source ~/nix-dotfiles/non-home-manager/zsh/.p10k.zsh";
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
@@ -24,7 +24,7 @@
             "as:theme"
             "depth:1"
           ];
-        } # Installations with additional options. For the list of options, please refer to Zplug README.
+        }
       ];
     };
   };
