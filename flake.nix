@@ -33,8 +33,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; }
-              users."${username}" = 
-                  hosts/workstation/home.nix;
+              users."${username}" = hosts/workstation/home.nix;
             };
           }
         ];
