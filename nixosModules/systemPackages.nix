@@ -11,6 +11,7 @@
 	waybar
 	nodejs
 	awww
+	tmux
     catppuccin-gtk
     ghostty
     adwaita-icon-theme

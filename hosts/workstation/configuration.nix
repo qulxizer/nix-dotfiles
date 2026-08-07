@@ -52,19 +52,20 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  # fonts.packages = with pkgs; [
-  #   noto-fonts
-  #   # noto-fonts-cjk
-  #   # noto-fonts-emoji
-  #   liberation_ttf
-  #   fira-code
-  #   fira-code-symbols
-  #   dina-font
-  #   proggyfonts
-  #   corefonts
-  #   vistafonts
-  #   (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  # ];
+  fonts.packages = with pkgs; [
+    # noto-fonts
+    nerd-fonts.iosevka
+    # noto-fonts-cjk
+    # noto-fonts-emoji
+    # liberation_ttf
+    # fira-code
+    # fira-code-symbols
+    # dina-font
+    # proggyfonts
+    # corefonts
+    # vistafonts
+    # (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
   #
   # fonts.fontconfig.defaultFonts =
   #   {
