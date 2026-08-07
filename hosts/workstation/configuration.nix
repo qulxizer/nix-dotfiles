@@ -21,6 +21,7 @@
     # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -49,7 +50,6 @@
 
   };
 
-  nixpkgs.config.allowUnfree = true;
   fonts.packages = with pkgs; [
     # noto-fonts
     nerd-fonts.iosevka
