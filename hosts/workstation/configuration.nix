@@ -51,26 +51,26 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  fonts.packages = with pkgs; [
-    noto-fonts
-    # noto-fonts-cjk
-    # noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    dina-font
-    proggyfonts
-    corefonts
-    vistafonts
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ];
-
-  fonts.fontconfig.defaultFonts =
-    {
-      serif = [ "Liberation Serif" "Noto Naskh Arabic" ];
-      sansSerif = [ "Noto Sans" "Noto Naskh Arabic" ];
-      monospace = [ "Fira Code" ];
-    };
+  # fonts.packages = with pkgs; [
+  #   noto-fonts
+  #   # noto-fonts-cjk
+  #   # noto-fonts-emoji
+  #   liberation_ttf
+  #   fira-code
+  #   fira-code-symbols
+  #   dina-font
+  #   proggyfonts
+  #   corefonts
+  #   vistafonts
+  #   (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  # ];
+  #
+  # fonts.fontconfig.defaultFonts =
+  #   {
+  #     serif = [ "Liberation Serif" "Noto Naskh Arabic" ];
+  #     sansSerif = [ "Noto Sans" "Noto Naskh Arabic" ];
+  #     monospace = [ "Fira Code" ];
+  #   };
 
   services.openssh.enable = true;
   system.stateVersion = "26.05"; # Did you read the comment? No.
