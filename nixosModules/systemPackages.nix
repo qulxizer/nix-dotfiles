@@ -21,13 +21,13 @@
     gnome-font-viewer
     tree
     easyeffects
-    ags
+    # ags
     home-manager
     magnetic-catppuccin-gtk
     nwg-look
     hyprpaper
-    haskellPackages.gi-dbusmenugtk3
-    inputs.swww.packages.${pkgs.system}.swww
-    inputs.zen-browser.packages."${pkgs.system}".specific
+    # haskellPackages.gi-dbusmenugtk3
+    # inputs.swww.packages.${pkgs.system}.swww
+    # inputs.zen-browser.packages."${pkgs.system}".specific
   ];
 }
