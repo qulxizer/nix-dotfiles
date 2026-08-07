@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   programs.niri = {
-    package = pkgs.niri;
+    # package = pkgs.niri;
     enable = true;
 
     settings = {
