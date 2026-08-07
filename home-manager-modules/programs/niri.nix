@@ -1,303 +1,299 @@
-{ inputs, pkgs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
 
-  imports = [ inputs.niri.homeModules.niri ];
-
+let
+  inherit (inputs.niri.lib.kdl)
+    node
+    plain
+    leaf
+    flag
+    ;
+in
+{
   programs.niri = {
+    enable = true;
     package = pkgs.niri;
 
-    enable = true;
-    settings = {
+    config = [
+      (leaf "spawn-at-startup" "/usr/lib/polkit-kde-authentication-agent-1")
+      (leaf "spawn-sh-at-startup" "wl-paste --watch cliphist store")
+      (leaf "spawn-at-startup" "waybar")
+      (leaf "spawn-at-startup" "awww-daemon")
+      (leaf "spawn-at-startup" [
+        "awww"
+        "img"
+        "~/nix-dotfiles/wallpapers/musashi.png"
+      ])
+      (leaf "spawn-at-startup" "dunst")
+      (leaf "spawn-at-startup" "xwayland-satellite")
 
-      prefer-no-csd = true;
+      (flag "prefer-no-csd")
 
-      environment = {
-        QT_QPA_PLATFORM = "wayland";
-        DISPLAY = ":0";
-      };
+      (plain "environment" [
+        (leaf "QT_QPA_PLATFORM" "wayland")
+        (leaf "DISPLAY" ":0")
+      ])
 
-      spawn-at-startup = [
-        { command = [ "/usr/lib/polkit-kde-authentication-agent-1" ]; }
-        {
-          command = [
-            "sh"
-            "-c"
-            "wl-paste --watch cliphist store"
-          ];
-        }
-        { command = [ "waybar" ]; }
-        { command = [ "awww-daemon" ]; }
-        {
-          command = [
-            "awww"
-            "img"
-            "~/nix-dotfiles/wallpapers/musashi.png"
-          ];
-        }
-        { command = [ "dunst" ]; }
-        { command = [ "xwayland-satellite" ]; }
-      ];
+      (plain "window-rule" [
+        (leaf "match" { app-id = "com-st-microxplorer-maingui-STM32CubeMX"; })
+        (plain "default-column-width" [ (leaf "proportion" 0.6) ])
+      ])
 
-      input = {
-        keyboard.xkb = { };
-        touchpad = {
-          tap = true;
-          natural-scroll = true;
-        };
-        mouse = {
-          accel-profile = "flat";
-        };
-        trackpoint = { };
-      };
+      (plain "input" [
+        (plain "keyboard" [ (plain "xkb" [ ]) ])
+        (plain "touchpad" [
+          (flag "tap")
+          (flag "natural-scroll")
+        ])
+        (plain "mouse" [ (leaf "accel-profile" "flat") ])
+        (plain "trackpoint" [ ])
+      ])
 
-      outputs."DP-1" = {
-        mode = {
-          width = 1920;
-          height = 1080;
-          refresh = 240.0;
-        };
-        position = {
+      (node "output" "DP-1" [
+        (leaf "mode" "1920x1080@240")
+        (leaf "transform" "normal")
+        (leaf "position" {
           x = 1280;
           y = 0;
-        };
-      };
+        })
+      ])
 
-      layout = {
-        gaps = 10;
-        center-focused-column = "never";
-        preset-column-widths = [
-          { proportion = 0.25; }
-          { proportion = 0.5; }
-          { proportion = 0.75; }
-          { proportion = 1.0; }
-        ];
-        preset-window-heights = [
-          { proportion = 0.25; }
-          { proportion = 0.5; }
-          { proportion = 0.75; }
-          { proportion = 1.0; }
-        ];
-        default-column-width = {
-          proportion = 0.5;
-        };
+      (plain "layout" [
+        (leaf "gaps" 10)
+        (leaf "center-focused-column" "never")
 
-        focus-ring.enable = false;
+        (plain "preset-column-widths" [
+          (leaf "proportion" 0.25)
+          (leaf "proportion" 0.5)
+          (leaf "proportion" 0.75)
+          (leaf "proportion" 1.0)
+        ])
 
-        border = {
-          width = 3;
-          active.color = "#cba6f7";
-          inactive.color = "#6c7086";
-        };
-      };
+        (plain "preset-window-heights" [
+          (leaf "proportion" 0.25)
+          (leaf "proportion" 0.5)
+          (leaf "proportion" 0.75)
+          (leaf "proportion" 1.0)
+        ])
 
-      screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
-      animations = { };
+        (plain "default-column-width" [ (leaf "proportion" 0.5) ])
 
-      window-rules = [
-        {
-          matches = [ { app-id = "com-st-microxplorer-maingui-STM32CubeMX"; } ];
-          default-column-width = {
-            proportion = 0.6;
-          };
-        }
-        {
-          geometry-corner-radius = {
-            radius = 8;
-          };
-          clip-to-geometry = true;
-        }
-        {
-          matches = [
-            {
-              app-id = "firefox$";
-              title = "^Picture-in-Picture$";
-            }
-          ];
-          open-floating = true;
-        }
-        {
-          matches = [ { app-id = "ghostty$"; } ];
-          opacity = 0.9;
-        }
-      ];
+        (plain "focus-ring" [ (flag "off") ])
 
-      binds = {
-        "Mod+Shift+Slash".action.show-hotkey-overlay = true;
+        (plain "border" [
+          (leaf "width" 3)
+          (leaf "active-color" "#cba6f7")
+          (leaf "inactive-color" "#6c7086")
+        ])
+      ])
 
-        "Mod+Return".action.spawn = "ghostty";
-        "Mod+D".action.spawn = ".config/rofi/launchers/type-1/launcher.sh";
-        "Mod+B".action.spawn = "brave";
-        "Super+Alt+L".action.spawn = "swaylock";
+      (leaf "screenshot-path" "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png")
 
-        "XF86AudioRaiseVolume" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "wpctl"
-            "set-volume"
-            "@DEFAULT_AUDIO_SINK@"
-            "0.1+"
-          ];
-        };
-        "XF86AudioLowerVolume" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "wpctl"
-            "set-volume"
-            "@DEFAULT_AUDIO_SINK@"
-            "0.1-"
-          ];
-        };
-        "XF86AudioMute" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "wpctl"
-            "set-mute"
-            "@DEFAULT_AUDIO_SINK@"
-            "toggle"
-          ];
-        };
-        "XF86AudioMicMute" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "wpctl"
-            "set-mute"
-            "@DEFAULT_AUDIO_SOURCE@"
-            "toggle"
-          ];
-        };
+      (plain "animations" [ ])
 
-        "Mod+Q".action.close-window = true;
+      (plain "window-rule" [
+        (leaf "geometry-corner-radius" 8)
+        (leaf "clip-to-geometry" true)
+      ])
 
-        "Mod+Left".action.focus-column-left = true;
-        "Mod+Down".action.focus-window-down = true;
-        "Mod+Up".action.focus-window-up = true;
-        "Mod+Right".action.focus-column-right = true;
-        "Mod+H".action.focus-column-left = true;
-        "Mod+J".action.focus-window-down = true;
-        "Mod+K".action.focus-window-up = true;
-        "Mod+L".action.focus-column-right = true;
+      (plain "window-rule" [
+        (leaf "match" {
+          app-id = "firefox$";
+          title = "^Picture-in-Picture$";
+        })
+        (leaf "open-floating" true)
+      ])
 
-        "Mod+Ctrl+Left".action.move-column-left = true;
-        "Mod+Ctrl+Down".action.move-window-down = true;
-        "Mod+Ctrl+Up".action.move-window-up = true;
-        "Mod+Ctrl+Right".action.move-column-right = true;
-        "Mod+Ctrl+H".action.move-column-left = true;
-        "Mod+Ctrl+J".action.move-window-down = true;
-        "Mod+Ctrl+K".action.move-window-up = true;
-        "Mod+Ctrl+L".action.move-column-right = true;
+      (plain "window-rule" [
+        (leaf "match" { app-id = "ghostty$"; })
+        (leaf "opacity" 0.9)
+      ])
 
-        "Mod+Home".action.focus-column-first = true;
-        "Mod+End".action.focus-column-last = true;
-        "Mod+Ctrl+Home".action.move-column-to-first = true;
-        "Mod+Ctrl+End".action.move-column-to-last = true;
+      (plain "binds" [
+        (plain "Mod+Shift+Slash" [ (flag "show-hotkey-overlay") ])
 
-        "Mod+Shift+Left".action.focus-monitor-left = true;
-        "Mod+Shift+Down".action.focus-monitor-down = true;
-        "Mod+Shift+Up".action.focus-monitor-up = true;
-        "Mod+Shift+Right".action.focus-monitor-right = true;
-        "Mod+Shift+H".action.focus-monitor-left = true;
-        "Mod+Shift+J".action.focus-monitor-down = true;
-        "Mod+Shift+K".action.focus-monitor-up = true;
-        "Mod+Shift+L".action.focus-monitor-right = true;
+        (plain "Mod+Return" [ (leaf "spawn" [ "ghostty" ]) ])
+        (plain "Mod+D" [ (leaf "spawn" [ ".config/rofi/launchers/type-1/launcher.sh" ]) ])
+        (plain "Mod+B" [ (leaf "spawn" [ "brave" ]) ])
+        (plain "Super+Alt+L" [ (leaf "spawn" [ "swaylock" ]) ])
 
-        "Mod+Shift+Ctrl+Left".action.move-column-to-monitor-left = true;
-        "Mod+Shift+Ctrl+Down".action.move-column-to-monitor-down = true;
-        "Mod+Shift+Ctrl+Up".action.move-column-to-monitor-up = true;
-        "Mod+Shift+Ctrl+Right".action.move-column-to-monitor-right = true;
-        "Mod+Shift+Ctrl+H".action.move-column-to-monitor-left = true;
-        "Mod+Shift+Ctrl+J".action.move-column-to-monitor-down = true;
-        "Mod+Shift+Ctrl+K".action.move-column-to-monitor-up = true;
-        "Mod+Shift+Ctrl+L".action.move-column-to-monitor-right = true;
+        # Using `node` for binds that need properties (like allow-when-locked or cooldown-ms)
+        # Signature: node name args children properties
+        (node "XF86AudioRaiseVolume"
+          [ ]
+          [
+            (leaf "spawn" [
+              "wpctl"
+              "set-volume"
+              "@DEFAULT_AUDIO_SINK@"
+              "0.1+"
+            ])
+          ]
+          { allow-when-locked = true; }
+        )
+        (node "XF86AudioLowerVolume"
+          [ ]
+          [
+            (leaf "spawn" [
+              "wpctl"
+              "set-volume"
+              "@DEFAULT_AUDIO_SINK@"
+              "0.1-"
+            ])
+          ]
+          { allow-when-locked = true; }
+        )
+        (node "XF86AudioMute"
+          [ ]
+          [
+            (leaf "spawn" [
+              "wpctl"
+              "set-mute"
+              "@DEFAULT_AUDIO_SINK@"
+              "toggle"
+            ])
+          ]
+          { allow-when-locked = true; }
+        )
+        (node "XF86AudioMicMute"
+          [ ]
+          [
+            (leaf "spawn" [
+              "wpctl"
+              "set-mute"
+              "@DEFAULT_AUDIO_SOURCE@"
+              "toggle"
+            ])
+          ]
+          { allow-when-locked = true; }
+        )
 
-        "Mod+Page_Down".action.focus-workspace-down = true;
-        "Mod+Page_Up".action.focus-workspace-up = true;
-        "Mod+U".action.focus-workspace-down = true;
-        "Mod+I".action.focus-workspace-up = true;
+        (plain "Mod+Q" [ (flag "close-window") ])
 
-        "Mod+Ctrl+Page_Down".action.move-column-to-workspace-down = true;
-        "Mod+Ctrl+Page_Up".action.move-column-to-workspace-up = true;
-        "Mod+Ctrl+U".action.move-column-to-workspace-down = true;
-        "Mod+Ctrl+I".action.move-column-to-workspace-up = true;
+        (plain "Mod+Left" [ (flag "focus-column-left") ])
+        (plain "Mod+Down" [ (flag "focus-window-down") ])
+        (plain "Mod+Up" [ (flag "focus-window-up") ])
+        (plain "Mod+Right" [ (flag "focus-column-right") ])
+        (plain "Mod+H" [ (flag "focus-column-left") ])
+        (plain "Mod+J" [ (flag "focus-window-down") ])
+        (plain "Mod+K" [ (flag "focus-window-up") ])
+        (plain "Mod+L" [ (flag "focus-column-right") ])
 
-        "Mod+Shift+Page_Down".action.move-workspace-down = true;
-        "Mod+Shift+Page_Up".action.move-workspace-up = true;
-        "Mod+Shift+U".action.move-workspace-down = true;
-        "Mod+Shift+I".action.move-workspace-up = true;
+        (plain "Mod+Ctrl+Left" [ (flag "move-column-left") ])
+        (plain "Mod+Ctrl+Down" [ (flag "move-window-down") ])
+        (plain "Mod+Ctrl+Up" [ (flag "move-window-up") ])
+        (plain "Mod+Ctrl+Right" [ (flag "move-column-right") ])
+        (plain "Mod+Ctrl+H" [ (flag "move-column-left") ])
+        (plain "Mod+Ctrl+J" [ (flag "move-window-down") ])
+        (plain "Mod+Ctrl+K" [ (flag "move-window-up") ])
+        (plain "Mod+Ctrl+L" [ (flag "move-column-right") ])
 
-        "Mod+WheelScrollDown" = {
+        (plain "Mod+Home" [ (flag "focus-column-first") ])
+        (plain "Mod+End" [ (flag "focus-column-last") ])
+        (plain "Mod+Ctrl+Home" [ (flag "move-column-to-first") ])
+        (plain "Mod+Ctrl+End" [ (flag "move-column-to-last") ])
+
+        (plain "Mod+Shift+Left" [ (flag "focus-monitor-left") ])
+        (plain "Mod+Shift+Down" [ (flag "focus-monitor-down") ])
+        (plain "Mod+Shift+Up" [ (flag "focus-monitor-up") ])
+        (plain "Mod+Shift+Right" [ (flag "focus-monitor-right") ])
+        (plain "Mod+Shift+H" [ (flag "focus-monitor-left") ])
+        (plain "Mod+Shift+J" [ (flag "focus-monitor-down") ])
+        (plain "Mod+Shift+K" [ (flag "focus-monitor-up") ])
+        (plain "Mod+Shift+L" [ (flag "focus-monitor-right") ])
+
+        (plain "Mod+Shift+Ctrl+Left" [ (flag "move-column-to-monitor-left") ])
+        (plain "Mod+Shift+Ctrl+Down" [ (flag "move-column-to-monitor-down") ])
+        (plain "Mod+Shift+Ctrl+Up" [ (flag "move-column-to-monitor-up") ])
+        (plain "Mod+Shift+Ctrl+Right" [ (flag "move-column-to-monitor-right") ])
+        (plain "Mod+Shift+Ctrl+H" [ (flag "move-column-to-monitor-left") ])
+        (plain "Mod+Shift+Ctrl+J" [ (flag "move-column-to-monitor-down") ])
+        (plain "Mod+Shift+Ctrl+K" [ (flag "move-column-to-monitor-up") ])
+        (plain "Mod+Shift+Ctrl+L" [ (flag "move-column-to-monitor-right") ])
+
+        (plain "Mod+Page_Down" [ (flag "focus-workspace-down") ])
+        (plain "Mod+Page_Up" [ (flag "focus-workspace-up") ])
+        (plain "Mod+U" [ (flag "focus-workspace-down") ])
+        (plain "Mod+I" [ (flag "focus-workspace-up") ])
+        (plain "Mod+Ctrl+Page_Down" [ (flag "move-column-to-workspace-down") ])
+        (plain "Mod+Ctrl+Page_Up" [ (flag "move-column-to-workspace-up") ])
+        (plain "Mod+Ctrl+U" [ (flag "move-column-to-workspace-down") ])
+        (plain "Mod+Ctrl+I" [ (flag "move-column-to-workspace-up") ])
+
+        (plain "Mod+Shift+Page_Down" [ (flag "move-workspace-down") ])
+        (plain "Mod+Shift+Page_Up" [ (flag "move-workspace-up") ])
+        (plain "Mod+Shift+U" [ (flag "move-workspace-down") ])
+        (plain "Mod+Shift+I" [ (flag "move-workspace-up") ])
+
+        (node "Mod+WheelScrollDown" [ ] [ (flag "focus-workspace-down") ] { cooldown-ms = 150; })
+        (node "Mod+WheelScrollUp" [ ] [ (flag "focus-workspace-up") ] { cooldown-ms = 150; })
+        (node "Mod+Ctrl+WheelScrollDown" [ ] [ (flag "move-column-to-workspace-down") ] {
           cooldown-ms = 150;
-          action.focus-workspace-down = true;
-        };
-        "Mod+WheelScrollUp" = {
-          cooldown-ms = 150;
-          action.focus-workspace-up = true;
-        };
-        "Mod+Ctrl+WheelScrollDown" = {
-          cooldown-ms = 150;
-          action.move-column-to-workspace-down = true;
-        };
-        "Mod+Ctrl+WheelScrollUp" = {
-          cooldown-ms = 150;
-          action.move-column-to-workspace-up = true;
-        };
+        })
+        (node "Mod+Ctrl+WheelScrollUp" [ ] [ (flag "move-column-to-workspace-up") ] { cooldown-ms = 150; })
 
-        "Mod+WheelScrollRight".action.focus-column-right = true;
-        "Mod+WheelScrollLeft".action.focus-column-left = true;
-        "Mod+Ctrl+WheelScrollRight".action.move-column-right = true;
-        "Mod+Ctrl+WheelScrollLeft".action.move-column-left = true;
+        (plain "Mod+WheelScrollRight" [ (flag "focus-column-right") ])
+        (plain "Mod+WheelScrollLeft" [ (flag "focus-column-left") ])
+        (plain "Mod+Ctrl+WheelScrollRight" [ (flag "move-column-right") ])
+        (plain "Mod+Ctrl+WheelScrollLeft" [ (flag "move-column-left") ])
 
-        "Mod+Shift+WheelScrollDown".action.focus-column-right = true;
-        "Mod+Shift+WheelScrollUp".action.focus-column-left = true;
-        "Mod+Ctrl+Shift+WheelScrollDown".action.move-column-right = true;
-        "Mod+Ctrl+Shift+WheelScrollUp".action.move-column-left = true;
+        (plain "Mod+Shift+WheelScrollDown" [ (flag "focus-column-right") ])
+        (plain "Mod+Shift+WheelScrollUp" [ (flag "focus-column-left") ])
+        (plain "Mod+Ctrl+Shift+WheelScrollDown" [ (flag "move-column-right") ])
+        (plain "Mod+Ctrl+Shift+WheelScrollUp" [ (flag "move-column-left") ])
 
-        "Mod+1".action.focus-workspace = 1;
-        "Mod+2".action.focus-workspace = 2;
-        "Mod+3".action.focus-workspace = 3;
-        "Mod+4".action.focus-workspace = 4;
-        "Mod+5".action.focus-workspace = 5;
-        "Mod+6".action.focus-workspace = 6;
-        "Mod+7".action.focus-workspace = 7;
-        "Mod+8".action.focus-workspace = 8;
-        "Mod+9".action.focus-workspace = 9;
+        (plain "Mod+1" [ (leaf "focus-workspace" 1) ])
+        (plain "Mod+2" [ (leaf "focus-workspace" 2) ])
+        (plain "Mod+3" [ (leaf "focus-workspace" 3) ])
+        (plain "Mod+4" [ (leaf "focus-workspace" 4) ])
+        (plain "Mod+5" [ (leaf "focus-workspace" 5) ])
+        (plain "Mod+6" [ (leaf "focus-workspace" 6) ])
+        (plain "Mod+7" [ (leaf "focus-workspace" 7) ])
+        (plain "Mod+8" [ (leaf "focus-workspace" 8) ])
+        (plain "Mod+9" [ (leaf "focus-workspace" 9) ])
 
-        "Mod+Ctrl+1".action.move-column-to-workspace = 1;
-        "Mod+Ctrl+2".action.move-column-to-workspace = 2;
-        "Mod+Ctrl+3".action.move-column-to-workspace = 3;
-        "Mod+Ctrl+4".action.move-column-to-workspace = 4;
-        "Mod+Ctrl+5".action.move-column-to-workspace = 5;
-        "Mod+Ctrl+6".action.move-column-to-workspace = 6;
-        "Mod+Ctrl+7".action.move-column-to-workspace = 7;
-        "Mod+Ctrl+8".action.move-column-to-workspace = 8;
-        "Mod+Ctrl+9".action.move-column-to-workspace = 9;
+        (plain "Mod+Ctrl+1" [ (leaf "move-column-to-workspace" 1) ])
+        (plain "Mod+Ctrl+2" [ (leaf "move-column-to-workspace" 2) ])
+        (plain "Mod+Ctrl+3" [ (leaf "move-column-to-workspace" 3) ])
+        (plain "Mod+Ctrl+4" [ (leaf "move-column-to-workspace" 4) ])
+        (plain "Mod+Ctrl+5" [ (leaf "move-column-to-workspace" 5) ])
+        (plain "Mod+Ctrl+6" [ (leaf "move-column-to-workspace" 6) ])
+        (plain "Mod+Ctrl+7" [ (leaf "move-column-to-workspace" 7) ])
+        (plain "Mod+Ctrl+8" [ (leaf "move-column-to-workspace" 8) ])
+        (plain "Mod+Ctrl+9" [ (leaf "move-column-to-workspace" 9) ])
 
-        "Mod+BracketLeft".action.consume-or-expel-window-left = true;
-        "Mod+BracketRight".action.consume-or-expel-window-right = true;
-        "Mod+Comma".action.consume-window-into-column = true;
-        "Mod+Period".action.expel-window-from-column = true;
+        (plain "Mod+BracketLeft" [ (flag "consume-or-expel-window-left") ])
+        (plain "Mod+BracketRight" [ (flag "consume-or-expel-window-right") ])
 
-        "Mod+R".action.switch-preset-column-width = true;
-        "Mod+Shift+R".action.switch-preset-window-height = true;
-        "Mod+Ctrl+R".action.reset-window-height = true;
-        "Mod+F".action.maximize-column = true;
-        "Mod+Shift+F".action.fullscreen-window = true;
-        "Mod+C".action.center-column = true;
+        (plain "Mod+Comma" [ (flag "consume-window-into-column") ])
+        (plain "Mod+Period" [ (flag "expel-window-from-column") ])
 
-        "Mod+Minus".action.set-column-width = "-10%";
-        "Mod+Equal".action.set-column-width = "+10%";
-        "Mod+Shift+Minus".action.set-window-height = "-10%";
-        "Mod+Shift+Equal".action.set-window-height = "+10%";
+        (plain "Mod+R" [ (flag "switch-preset-column-width") ])
+        (plain "Mod+Shift+R" [ (flag "switch-preset-window-height") ])
+        (plain "Mod+Ctrl+R" [ (flag "reset-window-height") ])
+        (plain "Mod+F" [ (flag "maximize-column") ])
+        (plain "Mod+Shift+F" [ (flag "fullscreen-window") ])
+        (plain "Mod+C" [ (flag "center-column") ])
 
-        "Mod+V".action.toggle-window-floating = true;
-        "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = true;
+        (plain "Mod+Minus" [ (leaf "set-column-width" "-10%") ])
+        (plain "Mod+Equal" [ (leaf "set-column-width" "+10%") ])
+        (plain "Mod+Shift+Minus" [ (leaf "set-window-height" "-10%") ])
+        (plain "Mod+Shift+Equal" [ (leaf "set-window-height" "+10%") ])
 
-        "Print".action.screenshot = true;
-        "Ctrl+Print".action.screenshot-screen = true;
-        "Alt+Print".action.screenshot-window = true;
+        (plain "Mod+V" [ (flag "toggle-window-floating") ])
+        (plain "Mod+Shift+V" [ (flag "switch-focus-between-floating-and-tiling") ])
 
-        "Mod+Shift+E".action.quit = true;
-        "Ctrl+Alt+Delete".action.quit = true;
-        "Mod+Shift+P".action.power-off-monitors = true;
-      };
-    };
+        (plain "Print" [ (flag "screenshot") ])
+        (plain "Ctrl+Print" [ (flag "screenshot-screen") ])
+        (plain "Alt+Print" [ (flag "screenshot-window") ])
+
+        (plain "Mod+Shift+E" [ (flag "quit") ])
+        (plain "Ctrl+Alt+Delete" [ (flag "quit") ])
+        (plain "Mod+Shift+P" [ (flag "power-off-monitors") ])
+      ])
+    ];
   };
 }
