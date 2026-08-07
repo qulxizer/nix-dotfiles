@@ -1,9 +1,9 @@
 { inputs, pkgs, ... }: {
 
   imports = [ inputs.niri.homeModules.niri ];
-  package = pkgs.niri;
 
   programs.niri = {
+    package = pkgs.niri;
 
     enable = true;
     settings = {
