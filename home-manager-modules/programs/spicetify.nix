@@ -5,6 +5,7 @@ in
 {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
+  # Adding flags to the spotify pkg
   nixpkgs.overlays = [
     (final: prev: {
       spotify = prev.spotify.overrideAttrs (oldAttrs: {
