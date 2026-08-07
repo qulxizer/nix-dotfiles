@@ -1,6 +1,9 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
 
   imports = [ inputs.niri.homeModules.niri ];
+  package = pkgs.niri.override {
+    libdisplay-info_0_2 = pkgs.libdisplay-info;
+  };
 
   programs.niri = {
 
