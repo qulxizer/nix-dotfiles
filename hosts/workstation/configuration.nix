@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       ./../../nixosModules/audio.nix
       ./../../nixosModules/systemPackages.nix
+      ./../../nixosModules/services.nix
       ./../../nixosModules/bootloader.nix
       # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
     ];
