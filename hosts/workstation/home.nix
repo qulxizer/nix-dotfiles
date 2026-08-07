@@ -10,6 +10,9 @@
     ./../../home-manager-modules/programs/spicetify.nix
   ];
   nixpkgs.config.allowUnfree = true;
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   home.username = "mahdi";
   home.homeDirectory = "/home/mahdi";
