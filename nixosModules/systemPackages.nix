@@ -8,6 +8,7 @@
 	swayidle
 	brave
     catppuccin-gtk
+    ghostty
     adwaita-icon-theme
     bibata-cursors
     vim
@@ -18,6 +19,8 @@
     emacs
     vlc
     vscode
+    zsh
+    unzip
     nixpkgs-fmt
     grimblast
     vesktop
