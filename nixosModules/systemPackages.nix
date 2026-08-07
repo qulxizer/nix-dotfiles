@@ -1,18 +1,18 @@
 { pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
-	neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-	wget
-	swaylock
-	fuzzel
-	mako
-	swayidle
-	brave
-	go
-	waybar
-	nodejs
-	awww
-	tmux
-	fzf
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    swaylock
+    fuzzel
+    mako
+    swayidle
+    brave
+    go
+    waybar
+    nodejs
+    awww
+    tmux
+    fzf
     catppuccin-gtk
     ghostty
     adwaita-icon-theme
@@ -32,7 +32,7 @@
     vesktop
     cliphist
     wl-clipboard
-    wofi
+    rofi
     alacritty
     gnome-font-viewer
     tree
@@ -41,7 +41,7 @@
     home-manager
     # magnetic-catppuccin-gtk
     nwg-look
-    hyprpaper
+    # hyprpaper
     # haskellPackages.gi-dbusmenugtk3
     # inputs.swww.packages.${pkgs.system}.swww
     # inputs.zen-browser.packages."${pkgs.system}".specific
