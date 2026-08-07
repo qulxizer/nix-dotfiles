@@ -10,6 +10,7 @@
 	go
 	waybar
 	nodejs
+	awww
     catppuccin-gtk
     ghostty
     adwaita-icon-theme
