@@ -9,6 +9,7 @@
     ./../../home-manager-modules/cli-tools/zsh.nix
     ./../../home-manager-modules/programs/spicetify.nix
   ];
+  home-manager.useGlobalPkgs = true;
 
   home.username = "mahdi";
   home.homeDirectory = "/home/mahdi";
