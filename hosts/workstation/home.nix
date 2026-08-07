@@ -12,6 +12,7 @@
 
   home.username = "mahdi";
   home.homeDirectory = "/home/mahdi";
+  home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
     git
