@@ -9,7 +9,7 @@
     ./../../home-manager-modules/cli-tools/zsh.nix
     ./../../home-manager-modules/programs/spicetify.nix
   ];
-  home.useGlobalPkgs = true;
+  nixpkgs.config.allowUnfree = true;
 
   home.username = "mahdi";
   home.homeDirectory = "/home/mahdi";
