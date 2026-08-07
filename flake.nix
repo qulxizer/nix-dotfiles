@@ -3,16 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # home-manager = {
+    #   url = "github:nix-community/home-manager/release-24.05";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    zen-browser.url = "github:qulxizer/zen-browser-flake";
-    helix.url = "github:helix-editor/helix/master";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    swww.url = "github:LGFae/swww";
-    ags.url = "github:Aylur/ags";
+    # zen-browser.url = "github:qulxizer/zen-browser-flake";
+    # helix.url = "github:helix-editor/helix/master";
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    # swww.url = "github:LGFae/swww";
+    # ags.url = "github:Aylur/ags";
     
   };
 
@@ -25,7 +25,7 @@
       nixosConfigurations.mahdi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          home-manager.nixosModules.home-manager
+          # home-manager.nixosModules.home-manager
           hosts/workstation/configuration.nix
         ];
       };
@@ -36,7 +36,7 @@
         extraSpecialArgs = { inherit inputs system; };
         # import your home.nix
         modules = [
-          hosts/workstation/home.nix
+          # hosts/workstation/home.nix
         ];
       };
 

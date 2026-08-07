@@ -62,7 +62,7 @@
     };
 
   services.openssh.enable = true;
-  system.stateVersion = "24.11"; # Did you read the comment? No.
+  system.stateVersion = "26.05"; # Did you read the comment? No.
 
 }
 
