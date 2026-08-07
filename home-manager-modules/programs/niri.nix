@@ -84,11 +84,17 @@
 
       window-rules = [
         {
-          matches = [ { app-id = "com-st-microxplorer-maingui-STM32CubeMX"; } ];
-          default-column-width.proportion = 0.6;
-        }
-        {
-          geometry-corner-radius = 8;
+          geometry-corner-radius =
+            let
+              r = 8.0;
+            in
+            {
+              top-left = r;
+              top-right = r;
+              bottom-right = r;
+              bottom-left = r;
+            };
+          # geometry-corner-radius = 8;
           clip-to-geometry = true;
         }
         {
