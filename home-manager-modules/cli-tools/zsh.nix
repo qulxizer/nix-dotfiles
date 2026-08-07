@@ -2,21 +2,9 @@
 {
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
-    dotDir = ".config/zsh";
     initExtra = ''
-      # Source powerlevel10k configuration safely
-      [[ ! -f ${../../non-home-manager/zsh/.p10k.zsh} ]] || source ${../../non-home-manager/zsh/.p10k.zsh}
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
-    };
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
     zplug = {
       enable = true;
       plugins = [
