@@ -39,6 +39,5 @@
       #     # hosts/workstation/home.nix
       #   ];
       # };
-
     };
 }
