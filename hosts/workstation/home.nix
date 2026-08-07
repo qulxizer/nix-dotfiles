@@ -13,8 +13,8 @@
 
     ];
 
-  home.username = "qulx";
-  home.homeDirectory = "/home/qulx";
+  home.username = "mahdi";
+  home.homeDirectory = "/home/mahdi";
 
   home.packages = with pkgs; [
     git

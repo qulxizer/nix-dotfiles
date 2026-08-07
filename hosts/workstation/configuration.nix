@@ -17,14 +17,14 @@
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  networking.hostName = "qulx";
+  networking.hostName = "mahdi";
 
   time.timeZone = "Asia/Bahrain";
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      qulx = import ./home.nix;
+      mahdi = import ./home.nix;
     };
   };
 
@@ -32,7 +32,7 @@
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
 
-  users.users.qulx = {
+  users.users.mahdi = {
     isNormalUser = true;
     initialPassword = "2812";
     extraGroups = [ "wheel" ];
