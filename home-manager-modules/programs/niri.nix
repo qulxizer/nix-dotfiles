@@ -1,8 +1,8 @@
 { inputs, ... }: {
-  modules = [
-    inputs.niri.nixosModules.niri
-  ];
   programs.niri = {
+    modules = [
+      inputs.niri.nixosModules.niri
+    ];
     enable = true;
 
     settings = {
