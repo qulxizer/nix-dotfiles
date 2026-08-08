@@ -19,6 +19,7 @@
     ./../../nixos-modules/services.nix
     ./../../nixos-modules/bootloader.nix
     ./../../nixos-modules/programs/gpg.nix
+    ./../../nixos-modules/programs/steam.nix
     # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
