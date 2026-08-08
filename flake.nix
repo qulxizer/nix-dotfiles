@@ -37,6 +37,7 @@
         ];
       };
       homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs; };
         pkgs = nixpkgs.legacyPackages."${system}";
         modules = [ ./hosts/workstation/home.nix ];
       };

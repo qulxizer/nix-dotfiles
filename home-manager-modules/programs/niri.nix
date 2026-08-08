@@ -74,8 +74,9 @@
           { proportion = 1.0; }
         ];
 
-        # focus-ring.off = true;
+        focus-ring.enable = false;
         border = {
+          enable = true;
           width = 3;
           active.color = "#cba6f7";
           inactive.color = "#6c7086";
