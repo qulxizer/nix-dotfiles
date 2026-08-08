@@ -26,7 +26,7 @@
     }@inputs:
     let
       username = "mahdi";
-      # system = "x86_64-linux";
+      system = "x86_64-linux";
     in
     {
       nixosConfigurations.mahdi = nixpkgs.lib.nixosSystem {
@@ -35,6 +35,10 @@
           hosts/workstation/configuration.nix
           home-manager.nixosModules.default
         ];
+      };
+      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."${system}";
+        modules = [ ./home.nix ];
       };
     };
 }

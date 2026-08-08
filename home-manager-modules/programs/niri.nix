@@ -117,9 +117,10 @@
 
         "Mod+Return".action.spawn = [ "ghostty" ];
         "Mod+D".action.spawn = [
-          "bash"
-          "-c"
-          "~/.config/rofi/launchers/type-1/launcher.sh"
+          "rofi -show drun"
+          # "bash"
+          # "-c"
+          # "~/.config/rofi/launchers/type-1/launcher.sh"
         ];
         "Mod+B".action.spawn = [ "brave" ];
         "Super+Alt+L".action.spawn = [ "swaylock" ];
