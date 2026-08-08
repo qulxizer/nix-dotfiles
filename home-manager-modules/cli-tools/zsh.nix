@@ -6,6 +6,8 @@
 
     # mkBefore forces this to the absolute top of .zshrc
     initContent = lib.mkBefore ''
+      bindkey '^[[1;5D' backward-word
+      bindkey '^[[1;5C' forward-word
       # Instant prompt
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"

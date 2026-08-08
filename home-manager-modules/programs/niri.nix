@@ -115,13 +115,16 @@
 
       binds = {
         "Mod+Shift+Slash".action.show-hotkey-overlay = { };
-
         "Mod+Return".action.spawn = [ "ghostty" ];
+        "Mod+V".action.spawn = [
+          "sh"
+          "-c"
+          "h=$(cliphist list); s=$(echo \"$h\" | cut -d$'\t' -f2- | rofi -dmenu -p \"📋\" -theme-str 'element { children: [ element-text ]; }'); [ -n \"$s\" ] && echo \"$h\" | grep -F \"$s\" | head -n 1 | cliphist decode | wl-copy"
+        ];
         "Mod+D".action.spawn = [
-          "rofi -show drun"
-          # "bash"
-          # "-c"
-          # "~/.config/rofi/launchers/type-1/launcher.sh"
+          "rofi"
+          "-show"
+          "drun"
         ];
         "Mod+B".action.spawn = [ "brave" ];
         "Super+Alt+L".action.spawn = [ "swaylock" ];
@@ -284,8 +287,8 @@
         "Mod+Shift+Minus".action.set-window-height = "-10%";
         "Mod+Shift+Equal".action.set-window-height = "+10%";
 
-        "Mod+V".action.toggle-window-floating = { };
-        "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = { };
+        "Mod+Shift+V".action.toggle-window-floating = { };
+        # "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = { };
 
         "Print".action.screenshot = { };
         "Ctrl+Print".action.screenshot-screen = { };

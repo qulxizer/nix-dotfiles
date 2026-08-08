@@ -10,6 +10,7 @@
     ./../../home-manager-modules/programs/spicetify.nix
     ./../../home-manager-modules/programs/foot.nix
     ./../../home-manager-modules/programs/niri.nix
+    ./../../home-manager-modules/programs/rofi.nix
   ];
   nixpkgs.config.allowUnfree = true;
   home.sessionVariables = {
