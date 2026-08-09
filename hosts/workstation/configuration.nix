@@ -20,6 +20,9 @@
     ./../../nixos-modules/bootloader.nix
     ./../../nixos-modules/programs/gpg.nix
     ./../../nixos-modules/programs/steam.nix
+    ./../../nixos-modules/programs/warp.nix
+    ./../../nixos-modules/mounts.nix
+    ./../../nixos-modules/programs/prism.nix
     # ./../../nixosModules/programs/hyprland.nix ./../../nixosModules/programs/ags.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -43,8 +46,8 @@
 
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
-  # programs.niri.enable = true;
-
+  programs.niri.enable = true;
+  programs.dconf.enable = true;
   programs.zsh.enable = true;
   users.users.mahdi = {
     isNormalUser = true;

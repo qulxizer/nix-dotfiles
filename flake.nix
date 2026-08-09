@@ -7,8 +7,12 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
+    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     niri.url = "github:sodiboo/niri-flake";
+    sops-nix.url = "github:Mic92/sops-nix";
     # zen-browser.url = "github:qulxizer/zen-browser-flake";
     # helix.url = "github:helix-editor/helix/master";
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -22,6 +26,8 @@
       self,
       nixpkgs,
       home-manager,
+      prismlauncher,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -33,6 +39,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           hosts/workstation/configuration.nix
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.default
         ];
       };

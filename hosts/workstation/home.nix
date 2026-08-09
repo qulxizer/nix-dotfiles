@@ -11,6 +11,7 @@
     ./../../home-manager-modules/programs/foot.nix
     ./../../home-manager-modules/programs/niri.nix
     ./../../home-manager-modules/programs/rofi.nix
+    ./../../home-manager-modules/programs/easyeffect.nix
   ];
   nixpkgs.config.allowUnfree = true;
   home.sessionVariables = {
