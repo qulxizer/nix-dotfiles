@@ -52,7 +52,10 @@
   users.users.mahdi = {
     isNormalUser = true;
     initialPassword = "2812";
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "dialout"
+    ];
     shell = pkgs.zsh;
 
   };
