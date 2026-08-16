@@ -209,20 +209,20 @@
         "Mod+Shift+Ctrl+K".action.move-column-to-monitor-up = { };
         "Mod+Shift+Ctrl+L".action.move-column-to-monitor-right = { };
 
-        "Mod+J".action.focus-workspace-down = { };
-        "Mod+K".action.focus-workspace-up = { };
+        # "Mod+J".action.focus-workspace-down = { };
+        # "Mod+K".action.focus-workspace-up = { };
         "Mod+U".action.focus-workspace-down = { };
         "Mod+I".action.focus-workspace-up = { };
 
         "Mod+Ctrl+Page_Down".action.move-column-to-workspace-down = { };
         "Mod+Ctrl+Page_Up".action.move-column-to-workspace-up = { };
-        "Mod+Ctrl+U".action.move-column-to-workspace-down = { };
-        "Mod+Ctrl+I".action.move-column-to-workspace-up = { };
+        "Mod+Shift+U".action.move-column-to-workspace-down = { };
+        "Mod+Shift+I".action.move-column-to-workspace-up = { };
 
         "Mod+Shift+Page_Down".action.move-workspace-down = { };
         "Mod+Shift+Page_Up".action.move-workspace-up = { };
-        "Mod+Shift+U".action.move-workspace-down = { };
-        "Mod+Shift+I".action.move-workspace-up = { };
+        "Mod+Ctrl+U".action.move-workspace-down = { };
+        "Mod+Ctrl+I".action.move-workspace-up = { };
 
         "Mod+WheelScrollDown" = {
           cooldown-ms = 150;

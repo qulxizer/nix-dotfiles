@@ -1,9 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
     # ./../../homeManagerModules/programs/hyprland.nix
     ./../../home-manager-modules/cli-tools/git.nix
+    ./../../home-manager-modules/cli-tools/github.nix
     # ./../../homeManagerModules/programs/hyprpaper.nix
     # ./../../homeManagerModules/programs/alacritty.nix
     ./../../home-manager-modules/cli-tools/zsh.nix
@@ -40,5 +46,5 @@
       };
   };
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
 }

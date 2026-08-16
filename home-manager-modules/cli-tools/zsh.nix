@@ -3,6 +3,9 @@
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
 
     # mkBefore forces this to the absolute top of .zshrc
     initContent = lib.mkBefore ''
@@ -18,5 +21,14 @@
       # Source config variables
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
+    shellAliases = {
+      ll = "ls -l";
+      update = "home-manager switch --flake .$USER";
+    };
+
+    history = {
+      size = 10000;
+      save = 10000;
+    };
   };
 }
