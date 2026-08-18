@@ -30,11 +30,11 @@
     device = "/dev/disk/by-uuid/0cf858b5-bfb2-4fec-9776-b201c9b94c89";
     fsType = "ext4";
   };
-  #
-  # fileSystems."/mnt/data" = {
-  #   device = "/dev/disk/by-uuid/4C9E53DE9E53BF60";
-  #   fsType = "ntfs3";
-  # };
+
+  fileSystems."/mnt/data" = {
+    device = "/dev/disk/by-uuid/4C9E53DE9E53BF60";
+    fsType = "ntfs";
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/CF25-4426";

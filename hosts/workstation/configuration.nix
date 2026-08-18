@@ -41,14 +41,10 @@
   time.timeZone = "Asia/Bahrain";
 
   # Secrets
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
 
   sops.age.keyFile = "/home/mahdi/.config/sops/age/keys.txt";
-
-  sops.secrets."nas/username" = { };
-  sops.secrets."nas/password" = { };
-  # sops.secrets.nas.password = { };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
