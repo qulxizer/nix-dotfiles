@@ -22,6 +22,8 @@
   nixpkgs.config.allowUnfree = true;
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
   home.username = "mahdi";

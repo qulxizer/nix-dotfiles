@@ -12,6 +12,7 @@
 
 {
   imports = [
+    # inputs.sops-nix.nixosModules.sops
     # inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ./../../nixos-modules/audio.nix
@@ -33,8 +34,21 @@
     "flakes"
   ];
   networking.hostName = "mahdi";
+  # networking.hosts = {
+  #   "172.16.235.98" = [ "git.1jz.cc" ];
+  # };
 
   time.timeZone = "Asia/Bahrain";
+
+  # Secrets
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+
+  sops.age.keyFile = "/home/mahdi/.config/sops/age/keys.txt";
+
+  sops.secrets."nas/username" = { };
+  sops.secrets."nas/password" = { };
+  # sops.secrets.nas.password = { };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

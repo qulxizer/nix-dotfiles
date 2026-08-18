@@ -1,4 +1,7 @@
-{ ... }: {
+{ inputs, ... }: {
+  imports = [
+    inputs.sops-nix.nixosModules.sops
+  ];
   fileSystems."/mnt/nas" = {
     device = "//172.16.115.188/Thicc32";
     fsType = "cifs";
