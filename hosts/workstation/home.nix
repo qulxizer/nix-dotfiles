@@ -9,6 +9,7 @@
   imports = [
     # ./../../homeManagerModules/programs/hyprland.nix
     ./../../home-manager-modules/cli-tools/git.nix
+    ./../../home-manager-modules/cli-tools/mpv.nix
     ./../../home-manager-modules/cli-tools/github.nix
     # ./../../homeManagerModules/programs/hyprpaper.nix
     # ./../../homeManagerModules/programs/alacritty.nix
