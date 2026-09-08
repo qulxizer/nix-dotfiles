@@ -32,7 +32,7 @@
     }@inputs:
     let
       username = "mahdi";
-      system = "x86_64-linux";
+      system = "aarch64-linux";
     in
     {
       nixosConfigurations.mahdi = nixpkgs.lib.nixosSystem {
@@ -47,6 +47,11 @@
         extraSpecialArgs = { inherit inputs; };
         pkgs = nixpkgs.legacyPackages."${system}";
         modules = [ ./hosts/workstation/home.nix ];
+      };
+      homeConfigurations.mac = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs; };
+        pkgs = nixpkgs.legacyPackages."${system}";
+        modules = [ ./hosts/mac/home.nix ];
       };
     };
 }
