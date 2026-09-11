@@ -34,7 +34,6 @@
           ];
         }
         { command = [ "dunst" ]; }
-        { command = [ "xwayland-satellite" ]; }
       ];
 
       input = {

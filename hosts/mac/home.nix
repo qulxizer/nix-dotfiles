@@ -31,7 +31,7 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
-  # targets.genericLinux.enable = true;
+  targets.genericLinux.enable = true;
   # targets.genericLinux.gpu.enable = true;
   # targets.genericLinux.gpu.enable = true;
 
