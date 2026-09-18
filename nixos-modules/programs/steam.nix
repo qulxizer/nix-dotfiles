@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
   programs.xwayland.enable = true;
   environment.systemPackages = with pkgs; [
     xwayland-satellite
@@ -11,5 +17,8 @@
     game-devices-udev-rules
   ];
   # environment.systemPackages = pkgs.xwayland-satellite;
-  programs.steam.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 }

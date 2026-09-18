@@ -43,7 +43,10 @@
           tap = true;
           natural-scroll = true;
         };
-        mouse.accel-profile = "flat";
+        mouse = {
+          scroll-method = "on-button-down";
+          accel-profile = "flat";
+        };
         trackpoint = { };
       };
 

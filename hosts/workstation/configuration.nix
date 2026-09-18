@@ -28,6 +28,7 @@
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
+  virtualisation.docker.enable = true;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -37,6 +38,20 @@
   # networking.hosts = {
   #   "172.16.235.98" = [ "git.1jz.cc" ];
   # };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      3001
+    ];
+    allowedUDPPorts = [ 51820 ];
+    allowedTCPPortRanges = [
+      {
+        from = 3000;
+        to = 3010;
+      }
+    ];
+  };
 
   time.timeZone = "Asia/Bahrain";
 

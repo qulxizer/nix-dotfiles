@@ -30,10 +30,20 @@
     device = "/dev/disk/by-uuid/0cf858b5-bfb2-4fec-9776-b201c9b94c89";
     fsType = "ext4";
   };
+  environment.systemPackages = [ pkgs.ntfs3g ];
 
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/4C9E53DE9E53BF60";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "uid=1000"
+      "gid=100"
+      "umask=000"
+      "exec"
+      "big_writes"
+      "nofail"
+    ];
   };
 
   fileSystems."/boot" = {
