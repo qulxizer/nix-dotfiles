@@ -28,6 +28,7 @@
     adwaita-icon-theme
     bibata-cursors
     vim
+    kicad
     # git
     wget
     kitty

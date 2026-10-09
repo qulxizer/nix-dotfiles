@@ -16,6 +16,9 @@
     # inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ./../../nixos-modules/audio.nix
+    ./../../nixos-modules/virtualization.nix
+    ./../../nixos-modules/programs/flatpak.nix
+    ./../../nixos-modules/programs/bedrock.nix
     ./../../nixos-modules/system-packages.nix
     ./../../nixos-modules/services.nix
     ./../../nixos-modules/bootloader.nix
@@ -35,9 +38,9 @@
     "flakes"
   ];
   networking.hostName = "mahdi";
-  # networking.hosts = {
-  #   "172.16.235.98" = [ "git.1jz.cc" ];
-  # };
+  networking.hosts = {
+    "172.16.235.98" = [ "git.1jz.cc" ];
+  };
 
   networking.firewall = {
     enable = true;
@@ -68,6 +71,7 @@
       mahdi = import ./home.nix;
     };
   };
+  networking.networkmanager.enable = true;
 
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
@@ -80,6 +84,7 @@
     extraGroups = [
       "wheel"
       "dialout"
+      "docker"
     ];
     shell = pkgs.zsh;
 

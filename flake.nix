@@ -13,6 +13,11 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     niri.url = "github:sodiboo/niri-flake";
     sops-nix.url = "github:Mic92/sops-nix";
+    bedrock-on-linux = {
+      url = "github:Wyze3306/BedrockOnLinux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # zen-browser.url = "github:qulxizer/zen-browser-flake";
     # helix.url = "github:helix-editor/helix/master";
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -32,7 +37,7 @@
     }@inputs:
     let
       username = "mahdi";
-      system = "aarch64-linux";
+      system = "x86_64-linux";
     in
     {
       nixosConfigurations.mahdi = nixpkgs.lib.nixosSystem {

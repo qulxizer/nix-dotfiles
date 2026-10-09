@@ -44,7 +44,7 @@
           natural-scroll = true;
         };
         mouse = {
-          scroll-method = "on-button-down";
+          # scroll-method = "on-button-down";
           accel-profile = "flat";
         };
         trackpoint = { };

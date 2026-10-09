@@ -13,6 +13,7 @@
     # ./../../homeManagerModules/programs/hyprpaper.nix
     # ./../../homeManagerModules/programs/alacritty.nix
     ./../../home-manager-modules/cli-tools/zsh.nix
+    ./../../home-manager-modules/cli-tools/yazi.nix
     ./../../home-manager-modules/programs/spicetify.nix
     ./../../home-manager-modules/programs/mpv.nix
     ./../../home-manager-modules/programs/foot.nix
