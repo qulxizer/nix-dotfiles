@@ -85,7 +85,12 @@
 
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
+  security.polkit = {
+    enable = true;
+    enablePkexecWrapper = true;
+  };
   programs.niri.enable = true;
+  programs.sway.enable = true;
   programs.dconf.enable = true;
   programs.zsh.enable = true;
   users.users.mahdi = {

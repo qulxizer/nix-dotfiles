@@ -27,6 +27,7 @@
   ];
   nixpkgs.config.allowUnfree = true;
   home.sessionVariables = {
+    GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
     NIXOS_OZONE_WL = "1";
     EDITOR = "nvim";
     VISUAL = "nvim";
@@ -37,7 +38,9 @@
   home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
-    sesh
+    grim
+    librsvg
+    slurp
   ];
   gtk = {
     enable = true;

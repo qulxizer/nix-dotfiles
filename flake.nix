@@ -47,9 +47,14 @@
         specialArgs = { inherit inputs; };
         modules = [
           hosts/workstation/configuration.nix
+          home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
+          ({ ... }: {
+            home-manager.sharedModules = [
+              catppuccin.homeModules.catppuccin
+            ];
+          })
         ];
       };
       homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {

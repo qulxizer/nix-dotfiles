@@ -73,6 +73,9 @@ in
     enable = true;
     systemd.enable = true;
     xwayland = true;
+    extraSessionCommands = ''
+      export GDK_PIXBUF_MODULE_FILE="${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
+    '';
 
     config = {
       modifier = mod;
@@ -85,6 +88,7 @@ in
             strip_workspace_numbers yes
             workspace_min_width 36
             height 28
+            icon_theme hicolor
           '';
           fonts = {
             names = [ "Iosevka Nerd Font Propo" ];
@@ -183,6 +187,7 @@ in
       startup = [
         { command = "wl-paste --watch cliphist store"; }
         { command = "awww-daemon"; }
+        { command = "soteria"; }
         { command = "awww img ~/nix-dotfiles/wallpapers/musashi.png"; }
         { command = "dunst"; }
       ];
@@ -279,13 +284,14 @@ in
 
         # Screenshots (needs grim + slurp installed)
         "Print" =
-          ''exec grim -g "$(slurp)" ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%H-%M-%S).png'';
-        "Ctrl+Print" = "exec grim ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%H-%M-%S).png";
+          ''exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%H-%M-%S).png | wl-copy'';
+        "Ctrl+Print" =
+          "exec grim - | tee ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%H-%M-%S).png | wl-copy";
 
         # Session & power
         "${mod}+Shift+e" = "exit";
         "Ctrl+Alt+Delete" = "exit";
-        "${mod}+Shift+p" = "output * dpms off";
+        "${mod}+Shift+p" = "output DP-1 power toggle, output DP-2 power toggle";
       };
     };
 

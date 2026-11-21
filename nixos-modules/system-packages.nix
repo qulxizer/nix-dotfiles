@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
     remmina
+    soteria
     _7zz
     btop
     usbutils
@@ -34,6 +35,7 @@
     catppuccin-gtk
     ghostty
     adwaita-icon-theme
+    papirus-icon-theme
     bibata-cursors
     vim
     kicad
