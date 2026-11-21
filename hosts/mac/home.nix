@@ -22,7 +22,7 @@
     home-manager-modules/programs/rofi.nix
     home-manager-modules/programs/brave.nix
     home-manager-modules/programs/cliphist.nix
-    home-manager-modules/programs/easyeffect.nix
+    # home-manager-modules/programs/easyeffect.nix
     home-manager-modules/fonts.nix
   ];
   nixpkgs.config.allowUnfree = true;

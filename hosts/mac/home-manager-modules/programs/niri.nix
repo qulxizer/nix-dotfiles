@@ -34,7 +34,7 @@
           command = [
             "bash"
             "-c"
-            "awww img ~/nix-dotfiles/wallpapers/musashi.png"
+            "awww img ~/nix-dotfiles/wallpapers/city.gif"
           ];
         }
         { command = [ "dunst" ]; }
@@ -297,7 +297,7 @@
         "Mod+Shift+V".action.toggle-window-floating = { };
         # "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = { };
 
-        "Print".action.screenshot = { };
+        "Mod+Shift+S".action.screenshot = { };
         "Ctrl+Print".action.screenshot-screen = { };
         "Alt+Print".action.screenshot-window = { };
 
