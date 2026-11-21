@@ -39,6 +39,7 @@ in
     enable = true;
 
     scripts = with pkgs.mpvScripts; [
+      uosc
       mpris
       thumbfast
     ];

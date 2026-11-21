@@ -1,5 +1,14 @@
 { pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
+    remmina
+    _7zz
+    btop
+    usbutils
+    ltspice
+    mpv
+    ffmpeg
+    libva
+    bottles
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     mangohud
     cifs-utils
@@ -10,7 +19,6 @@
     wget
     swaylock
     fuzzel
-    mako
     swayidle
     brave
     go
@@ -31,10 +39,8 @@
     kicad
     # git
     wget
-    kitty
     firefox
     emacs
-    vlc
     vscode
     zsh
     unzip

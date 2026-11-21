@@ -25,6 +25,7 @@ in
       adblockify
       hidePodcasts
       shuffle
+      spicyLyrics
     ];
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";

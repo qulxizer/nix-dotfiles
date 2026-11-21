@@ -24,6 +24,7 @@
     ./../../nixos-modules/bootloader.nix
     ./../../nixos-modules/programs/gpg.nix
     ./../../nixos-modules/programs/steam.nix
+    ./../../nixos-modules/programs/uxplay.nix
     ./../../nixos-modules/programs/warp.nix
     ./../../nixos-modules/mounts.nix
     ./../../nixos-modules/programs/prism.nix
@@ -32,6 +33,15 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
   virtualisation.docker.enable = true;
+  virtualisation.docker.daemon.settings = {
+    bip = "10.200.0.1/16";
+    default-address-pools = [
+      {
+        base = "10.201.0.0/16";
+        size = 24;
+      }
+    ];
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -43,7 +53,7 @@
   };
 
   networking.firewall = {
-    enable = true;
+    enable = false;
     allowedTCPPorts = [
       3001
     ];

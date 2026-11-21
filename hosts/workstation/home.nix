@@ -9,16 +9,20 @@
   imports = [
     # ./../../homeManagerModules/programs/hyprland.nix
     ./../../home-manager-modules/cli-tools/git.nix
+    ./../../home-manager-modules/cli-tools/tmux.nix
     ./../../home-manager-modules/cli-tools/github.nix
     # ./../../homeManagerModules/programs/hyprpaper.nix
     # ./../../homeManagerModules/programs/alacritty.nix
     ./../../home-manager-modules/cli-tools/zsh.nix
     ./../../home-manager-modules/cli-tools/yazi.nix
     ./../../home-manager-modules/programs/spicetify.nix
-    ./../../home-manager-modules/programs/mpv.nix
+    # ./../../home-manager-modules/programs/mpv.nix
     ./../../home-manager-modules/programs/foot.nix
     ./../../home-manager-modules/programs/niri.nix
+    ./../../home-manager-modules/programs/sway.nix
+    ./../../home-manager-modules/programs/catppuccin.nix
     ./../../home-manager-modules/programs/rofi.nix
+    ./../../home-manager-modules/programs/dunst.nix
     ./../../home-manager-modules/programs/easyeffect.nix
   ];
   nixpkgs.config.allowUnfree = true;
@@ -32,9 +36,26 @@
   home.homeDirectory = "/home/mahdi";
   home.enableNixpkgsReleaseCheck = false;
 
-  # home.packages = with pkgs; [
-  #   git
-  # ];
+  home.packages = with pkgs; [
+    sesh
+  ];
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
+  qt = {
+    enable = true;
+    style = {
+      name = "kvantum";
+    };
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications =

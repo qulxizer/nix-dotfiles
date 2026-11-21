@@ -1,9 +1,9 @@
 { config, ... }: {
   programs.rofi = {
     enable = true;
-    font = "Iosevka Nerd Font 13";
 
-    extraConfig = {
+    settings = {
+      font = "Iosevka Nerd Font 13";
       modi = "drun,run,window";
       show-icons = true;
       terminal = "ghostty";

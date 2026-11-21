@@ -7,6 +7,8 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
+
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
     };
@@ -32,6 +34,7 @@
       nixpkgs,
       home-manager,
       prismlauncher,
+      catppuccin,
       sops-nix,
       ...
     }@inputs:
@@ -44,14 +47,18 @@
         specialArgs = { inherit inputs; };
         modules = [
           hosts/workstation/configuration.nix
+          catppuccin.nixosModules.catppuccin
           sops-nix.nixosModules.sops
-          home-manager.nixosModules.default
+          home-manager.nixosModules.home-manager
         ];
       };
       homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; };
         pkgs = nixpkgs.legacyPackages."${system}";
-        modules = [ ./hosts/workstation/home.nix ];
+        modules = [
+          ./hosts/workstation/home.nix
+          catppuccin.homeModules.catppuccin
+        ];
       };
       homeConfigurations.mac = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; };
